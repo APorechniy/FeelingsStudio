@@ -1,0 +1,47 @@
+* {
+  margin: 0;
+  padding: 0;
+
+  font-size: 15px;
+  font-family: "Mulish", sans-serif !important;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+@keyframes show {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.fadeIn {
+  animation: show 1s 1;
+  animation-fill-mode: forwards;
+}
+
+[data-delay="0"] {
+  animation-delay: 0s;
+}
+
+[data-delay="0.5"] {
+  animation-delay: 0.5s;
+}
+
+[data-delay="1"] {
+  animation-delay: 1s;
+}
+
+[data-delay="1.5"] {
+  animation-delay: 1.5s;
+}
+
+[data-delay="2"] {
+  animation-delay: 2s;
+}
