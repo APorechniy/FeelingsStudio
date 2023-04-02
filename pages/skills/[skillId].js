@@ -1,14 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Header from "../../components/Header/Header";
 import styled from "styled-components";
 import { Button, Typography } from "@mui/material";
 import { skillsInfo } from "../../content/skills";
-import SkillBreadcrumps from "../../components/SkillsBreadcrumps/SkillBreadcrumps";
-import PointCard from "../../components/PointCard/PointCard";
-import SignUpModal from "../../components/SignUpModal/SignUpModal";
-import Footer from "../../components/Footer/Footer";
+import {
+  SkillBreadcrumps,
+  PointCard,
+  Footer,
+  SignUpBlock,
+} from "../../components/";
 
 import Head from "next/head";
+
+import theme from "../../config/theme";
 
 const SkillPreviewContainer = styled.div`
   width: 100%;
@@ -30,16 +34,33 @@ const SkillBlock = styled.div`
   width: 100%;
   height: 100vh;
 
+  position: relative;
+
   display: flex;
   align-items: flex-start;
   justify-content: center;
   flex-direction: column;
 
-  background: ${({ backgroundImage }) =>
+  background: rgba(0, 0, 0, 0.5);
+
+  /* background: ${({ backgroundImage }) =>
     backgroundImage ? `url(${backgroundImage})` : "none"};
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center;
+  background-position: center; */
+`;
+
+const VideoBackground = styled.div`
+  position: absolute;
+
+  width: 100%;
+  height: 100%;
+
+  top: 0;
+
+  z-index: -1;
+
+  object-fit: cover;
 `;
 
 const SkillContent = styled.div`
@@ -51,12 +72,7 @@ const SkillContent = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
-
-  margin-left: auto;
-  margin-right: auto;
-
-  padding-right: 50%;
+  flex-direction: row;
 
   @media (max-width: 768px) {
     padding-left: 1.6rem;
@@ -65,10 +81,8 @@ const SkillContent = styled.div`
 `;
 
 const SkillText = styled.div`
-  width: 100%;
+  width: 50%;
   height: auto;
-
-  backdrop-filter: blur(30px);
 
   padding: 2rem;
   margin-top: 4rem;
@@ -79,8 +93,12 @@ const SkillText = styled.div`
 
   display: flex;
   align-items: flex-start;
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: column;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 const DescriptionBlock = styled.div`
@@ -124,7 +142,7 @@ const PointsBlock = styled.div`
   justify-content: center;
   flex-direction: column;
 
-  background: #006a4e;
+  background: ${theme.palette.primary.main};
 
   @media (max-width: 768px) {
     width: 100%;
@@ -164,6 +182,7 @@ const VideoOverlay = styled.div`
 
   position: relative;
 
+  margin-top: 5rem;
   padding: 1rem;
 
   display: flex;
@@ -178,6 +197,7 @@ const Video = styled.video`
   height: 100%;
 
   object-fit: cover;
+  z-index: -1;
 `;
 
 export async function getStaticPaths() {
@@ -206,25 +226,79 @@ export async function getStaticProps(context) {
 }
 
 const Skill = ({ currentSkill }) => {
-  const [openModal, setOpenModal] = useState(false);
-
-  const handleOpenModal = () => setOpenModal(true);
-
-  const handleCloseModal = () => setOpenModal(false);
+  const handleScroll = () => {
+    document.getElementById("SignUpBlock").scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  };
 
   return (
     <>
       <Head>
-        <title>{currentSkill.name} | Студия танца и фитнеса в Тюмени</title>
+        <title>{`${currentSkill.name} | Студия танца и фитнеса в Тюмени`}</title>
         <meta name="description" content={currentSkill.description}></meta>
         <meta
           name="keywords"
-          content={`Фитнес-студия, танцы, растяжка, стретчинг, stretching, студия, ${currentSkill.name}`}
+          content={`Фитнес-студия, танцы, растяжка, стретчинг, stretching, студия, ${currentSkill.name}, Тюмень`}
         />
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1"
         ></meta>
+        <meta name="author" lang="ru" content="Porechnyy Alexandr" />
+        <meta httpEquiv="content-type" content="text/html; charset=UTF-8" />
+        <meta name="resource-type" content="Homepage" />
+        <meta name="robots" content="index,follow" />
+        <meta httpEquiv="content-language" content="ru" />
+        <link
+          rel="icon"
+          type="image/x-icon"
+          href="/favicon.ico"
+          sizes="16x16"
+        ></link>
+
+        <link
+          rel="icon"
+          type="image/x-icon"
+          href="/favicon.ico"
+          sizes="32x32"
+        ></link>
+
+        <link
+          rel="icon"
+          type="image/x-icon"
+          href="/favicon.ico"
+          sizes="48x48"
+        ></link>
+
+        <link
+          rel="icon"
+          type="image/x-icon"
+          href="/favicon.ico"
+          sizes="96x96"
+        ></link>
+
+        <link
+          rel="icon"
+          type="image/x-icon"
+          href="/favicon.ico"
+          sizes="144x144"
+        ></link>
+
+        <link
+          rel="icon"
+          type="image/x-icon"
+          href="/favicon.ico"
+          sizes="192x192"
+        ></link>
+
+        <link
+          rel="icon"
+          type="image/x-icon"
+          href="/favicon.ico"
+          sizes="512x512"
+        ></link>
 
         <meta property="og:title" content={`${currentSkill.name} | Feelings`} />
         <meta property="og:image" content="/feel-body.jpg" />
@@ -238,7 +312,7 @@ const Skill = ({ currentSkill }) => {
         />
       </Head>
 
-      <Header />
+      <Header themeToggle={"opacity"} />
       {currentSkill && (
         <SkillPreviewContainer>
           <SkillBreadcrumps activeSkillId={currentSkill.id} />
@@ -252,11 +326,38 @@ const Skill = ({ currentSkill }) => {
                 >
                   {currentSkill.name}
                 </Typography>
-                <Typography variant="h2" sx={{ color: "white" }} gutterBottom>
-                  {currentSkill.description}
-                </Typography>
+                {currentSkill.description.map((text, index) => (
+                  <Typography
+                    variant="h2"
+                    sx={{ color: "white" }}
+                    gutterBottom
+                    key={index}
+                  >
+                    {text}
+                  </Typography>
+                ))}
+
+                <Button
+                  sx={{ marginTop: "1.6rem", color: "white" }}
+                  color={"primary"}
+                  variant={"contained"}
+                  onClick={handleScroll}
+                >
+                  записаться на тренировку
+                </Button>
               </SkillText>
             </SkillContent>
+
+            <VideoBackground>
+              <Video
+                src={currentSkill.videoSrc}
+                autoPlay
+                loop
+                controls={false}
+                muted
+                controlsList="nodownload"
+              />
+            </VideoBackground>
           </SkillBlock>
 
           <DescriptionBlock>
@@ -284,38 +385,7 @@ const Skill = ({ currentSkill }) => {
             ))}
           </PointsBlock>
 
-          <VideoBlock>
-            <Typography
-              variant="h2"
-              sx={{ fontWeight: 700 }}
-              gutterBottom
-              align={"center"}
-            >
-              Посмотри как это будет
-            </Typography>
-            <VideoOverlay>
-              <Video
-                src={currentSkill.videoSrc}
-                loop
-                controls
-                controlsList="nodownload"
-              />
-            </VideoOverlay>
-            <Button
-              variant="outlined"
-              size={"large"}
-              onClick={handleOpenModal}
-              color={"primary"}
-              sx={{ marginTop: "1.5rem" }}
-            >
-              записаться на занятие
-            </Button>
-          </VideoBlock>
-
-          <SignUpModal
-            openModal={openModal}
-            handleCloseModal={handleCloseModal}
-          />
+          <SignUpBlock presetSkill={currentSkill.id} />
         </SkillPreviewContainer>
       )}
       <Footer />

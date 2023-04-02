@@ -1,6 +1,8 @@
 import { Typography } from "@mui/material";
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
+import theme from "../../config/theme";
+import { useObserver } from "../../hooks/use-observer";
 
 const Container = styled.div`
   width: 100%;
@@ -11,7 +13,7 @@ const Container = styled.div`
   justify-content: center;
   flex-direction: column;
 
-  background: #006a4e;
+  background: ${theme.palette.primary.main};
 `;
 
 const Content = styled.div`
@@ -22,6 +24,11 @@ const Content = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
+
+  @media (max-width: 768px) {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
 `;
 
 const FadeInTypography = styled(Typography)`
@@ -32,29 +39,8 @@ const FadeInTypography = styled(Typography)`
 `;
 
 const ComeOnSlide = () => {
-  useEffect(() => {
-    const title = document.getElementById("comeonslide-title");
-    const description = document.getElementById("comeonslide-description");
-
-    const observerTitle = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          title.classList.add("fadeIn");
-        }
-      });
-    });
-
-    const observerDescription = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          description.classList.add("fadeIn");
-        }
-      });
-    });
-
-    observerTitle.observe(title);
-    observerDescription.observe(description);
-  }, []);
+  useObserver("comeonslide-title");
+  useObserver("comeonslide-description");
 
   return (
     <Container>

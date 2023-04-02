@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { skillsInfo } from "../../content/skills";
 import { Typography } from "@mui/material";
+import theme from "../../config/theme";
 
 const Container = styled.div`
   width: min(100%, 80rem);
@@ -17,6 +18,8 @@ const Container = styled.div`
   align-items: flex-start;
   justify-content: center;
   flex-wrap: wrap;
+
+  z-index: 1;
 `;
 
 const SkillButton = styled.div`
@@ -31,7 +34,7 @@ const SkillButton = styled.div`
   box-sizing: border-box;
 
   background: ${({ isActive }) =>
-    isActive ? "rgba(47, 106, 96, 0.75)" : "rgba(255, 255, 255, 0.5)"};
+    isActive ? theme.palette.primary.main : "rgba(255, 255, 255, 1)"};
 
   display: flex;
   align-items: center;
@@ -44,6 +47,7 @@ const SkillButton = styled.div`
 
   &:hover {
     background: rgba(255, 255, 255, 1);
+    color: ${theme.palette.primary.main} !important;
   }
 `;
 
@@ -62,8 +66,14 @@ const SkillBreadcrumps = ({ activeSkillId }) => {
         >
           <SkillButton isActive={activeSkillId === s.id}>
             <Typography
-              variant="h6"
-              sx={{ textDecoration: "none", color: "black" }}
+              variant="h4"
+              sx={{
+                textDecoration: "none",
+                color:
+                  activeSkillId === s.id
+                    ? "white !important"
+                    : theme.palette.primary.main,
+              }}
             >
               {s.name}
             </Typography>

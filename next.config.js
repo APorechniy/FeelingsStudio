@@ -7,8 +7,7 @@ const nextConfig = {
   ) {
     return {
       "/": { page: "/" },
-      "/about-us/index": { page: "/about-us" },
-      "/all-skills/index": { page: "/all-skills" },
+      "/buy/index": { page: "/buy" },
       "/contacts/index": { page: "/contacts" },
       "/contract/index": { page: "/contract" },
     };

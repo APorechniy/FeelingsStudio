@@ -73,7 +73,7 @@ const SignUpModal = ({ openModal, handleCloseModal }) => {
       <Paper
         sx={{
           position: "absolute",
-          top: { xs: "15%", sm: "15%", md: "15%", lg: "15%" },
+          top: { xs: "10%", sm: "10%", md: "10%", lg: "10%" },
           left: { xs: "0", sm: "0", md: "35%", lg: "35%" },
           right: { xs: "0", sm: "0", md: "35%", lg: "35%" },
           padding: "2rem",
@@ -132,9 +132,9 @@ const SignUpModal = ({ openModal, handleCloseModal }) => {
           </FormControl>
 
           <Typography variant={"h5"} sx={{ marginTop: "1.6rem" }}>
-            Нажимая кнопку `Отправить заявку`, Вы соглашаетесь с{" "}
+            Нажимая кнопку `Отправить заявку`, Вы принимаете условия{" "}
             <Link href="/contract" target="_blank">
-              договором-офертой
+              договора-оферты
             </Link>
           </Typography>
 
@@ -147,6 +147,28 @@ const SignUpModal = ({ openModal, handleCloseModal }) => {
           >
             Отправить
           </Button>
+
+          <Typography
+            variant={"h5"}
+            sx={{ marginTop: "1.6rem" }}
+            align={"center"}
+          >
+            или оставь заявку через форму в нашей группе ВКонтакте
+          </Typography>
+
+          <Link
+            href="https://vk.com/app6013442_-218415280?form_id=1#form_id=1"
+            target="_blank"
+          >
+            <Button
+              sx={{ marginTop: "1.6rem" }}
+              color={"success"}
+              fullWidth
+              variant={"contained"}
+            >
+              Перейти в ВК
+            </Button>
+          </Link>
         </Box>
 
         <Button
