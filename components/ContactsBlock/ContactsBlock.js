@@ -2,6 +2,11 @@ import { Typography } from "@mui/material";
 import React from "react";
 import styled from "styled-components";
 
+import { YMaps, Map, Placemark } from "react-yandex-maps";
+import Logo from "../../public/Logo.png";
+
+import theme from "../../config/theme";
+
 const Container = styled.div`
   width: 100%;
   height: 100vh;
@@ -74,20 +79,16 @@ const Description = styled.div`
   flex-direction: row;
 `;
 
-const LogoContainer = styled.div`
+const MapContainer = styled.div`
   width: 45%;
   height: 100%;
+
+  padding-top: 10rem;
 
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-
-  z-index: -1;
-
-  @media (max-width: 768px) {
-    display: none;
-  }
 `;
 
 const LogoImage = styled.img`
@@ -171,9 +172,25 @@ const ContactsBlock = () => {
           ))}
         </TextBlock>
 
-        <LogoContainer>
-          <LogoImage src={"/FullLogo.png"} alt={"Логотип студии"} />
-        </LogoContainer>
+        <MapContainer>
+          <YMaps>
+            <Map
+              defaultState={{ center: [57.177449, 65.565062], zoom: 15 }}
+              width={"100%"}
+              height={"90%"}
+            >
+              <Placemark
+                geometry={[57.177449, 65.565062]}
+                options={{
+                  iconColor: theme.palette.primary.main,
+                  iconImageHref: "/Logo.png",
+                  preset: "default#image",
+                  iconImageSize: [30, 30],
+                }}
+              />
+            </Map>
+          </YMaps>
+        </MapContainer>
       </Content>
     </Container>
   );

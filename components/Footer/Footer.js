@@ -6,6 +6,8 @@ import TelegramIcon from "@mui/icons-material/Telegram";
 import PhoneIcon from "@mui/icons-material/Phone";
 import { VK } from "../VkIcon/VkIcon";
 
+import theme from "../../config/theme";
+
 const Container = styled.footer`
   width: 100%;
   height: auto;
@@ -18,7 +20,7 @@ const Container = styled.footer`
   align-items: center;
   justify-content: center;
 
-  background: #006a4e;
+  background: ${theme.palette.primary.main};
 `;
 
 const Content = styled.div`
@@ -55,6 +57,23 @@ const LinksBlock = styled.div`
 
 const Link = styled.a`
   text-decoration: none;
+
+  @media (max-width: 768px) {
+    text-align: center;
+  }
+`;
+
+const IconLink = styled.a`
+  text-decoration: none;
+
+  width: 2.5rem;
+  height: 2.5rem;
+
+  margin-left: 2rem;
+
+  @media (max-width: 768px) {
+    margin-left: 0;
+  }
 `;
 
 const SocialBlock = styled.div`
@@ -68,7 +87,7 @@ const SocialBlock = styled.div`
 
   @media (max-width: 768px) {
     width: 100%;
-    justify-content: center;
+    justify-content: space-around;
     margin-top: 1.5rem;
   }
 `;
@@ -85,9 +104,11 @@ const LinkText = styled(Typography)`
 const CompanyText = styled(Typography)`
   color: white;
   margin-right: 3rem;
+  margin-left: 3rem;
 
   @media (max-width: 768px) {
     margin-right: 1.5rem;
+    margin-top: 2.5rem;
   }
 `;
 
@@ -126,29 +147,29 @@ const Footer = () => {
     <Container>
       <Content>
         <LinksBlock>
-          <CompanyText variant="h4">© 2023 FEELINGS</CompanyText>
           {links.map((l) => (
             <Link href={l.href} key={l.href} style={{ textDecoration: "none" }}>
-              <LinkText variant="h5">{l.text}</LinkText>
+              <LinkText variant="h4">{l.text}</LinkText>
             </Link>
           ))}
         </LinksBlock>
 
         <SocialBlock>
           {social.map((s) => (
-            <Link href={s.href} key={s.href} target={"_blank"}>
+            <IconLink href={s.href} key={s.href} target={"_blank"}>
               <s.Icon
                 sx={{
                   width: "2.5rem",
                   height: "2.5rem",
-                  marginLeft: "2rem",
-                  color: "white",
                   cursor: "pointer",
                 }}
+                color={"info"}
               />
-            </Link>
+            </IconLink>
           ))}
         </SocialBlock>
+
+        <CompanyText variant="h4">{`© ${new Date().getFullYear()} FEELINGS`}</CompanyText>
       </Content>
     </Container>
   );

@@ -1,21 +1,33 @@
 import { Button, Typography } from "@mui/material";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import styled from "styled-components";
 import SignUpModal from "../SignUpModal/SignUpModal";
 
+import theme from "../../config/theme";
+
 const Container = styled.div`
   width: 100%;
-  height: 80vh;
+  height: 100vh;
+
+  padding: 1rem;
 
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+
+  background: ${theme.palette.primary.main};
+
+  @media (max-width: 768px) {
+    height: 100vh;
+  }
 `;
 
 const Content = styled.div`
   width: min(100%, 1300px);
   height: 100%;
+
+  position: relative;
 
   display: flex;
   align-items: center;
@@ -24,6 +36,7 @@ const Content = styled.div`
 `;
 
 const FadeInTypography = styled(Typography)`
+  color: white;
   opacity: 0;
   transition: 1s;
   animation: show 1s 1;
@@ -38,15 +51,19 @@ const FadeInTypography = styled(Typography)`
       opacity: 1;
     }
   }
+
+  @media (max-width: 768px) {
+    margin-top: 1.5rem !important;
+  }
 `;
 
 const StyledButton = styled(Button)`
-  background-color: #005234;
+  background-color: white;
   box-shadow: 0 0 20px white;
-  color: white;
+  color: ${theme.palette.primary.main};
 
   &:hover {
-    color: #005234;
+    color: white;
   }
 `;
 
