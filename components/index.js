@@ -22,7 +22,7 @@ import SubscriptionBlock from "./SubscriptionBlock/SubscriptionBlock";
 import SubscriptionCard from "./SubscriptionCard/SubscriptionCard";
 import Timesheet from "./Timesheet/Timesheet";
 import TimesheetModal from "./TimesheetModal/TimesheetModal";
-import VKIcon from "./VkIcon/VkIcon";
+import VkIcon from "./VkIcon/VkIcon";
 import Questions from "./Questions/Questions";
 
 export {
@@ -50,6 +50,6 @@ export {
   SubscriptionCard,
   Timesheet,
   TimesheetModal,
-  VKIcon,
+  VkIcon,
   Questions,
 };

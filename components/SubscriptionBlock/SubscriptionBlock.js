@@ -50,7 +50,7 @@ const SubscriptionBlock = () => {
         {subscribitions.map(({ name, types }, index) => (
           <React.Fragment key={index}>
             <Typography
-              variant="h1"
+              variant="h2"
               gutterBottom
               sx={{ marginBottom: "7rem", marginTop: index ? "5rem" : null }}
               color={theme.palette.primary.main}

@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 import TelegramIcon from "@mui/icons-material/Telegram";
 import PhoneIcon from "@mui/icons-material/Phone";
-import { VK } from "../VkIcon/VkIcon";
+import VkIcon from "../VkIcon/VkIcon";
 
 import theme from "../../config/theme";
 
@@ -130,15 +130,44 @@ const links = [
 const social = [
   {
     href: "https://t.me/FeelingsStudio",
-    Icon: TelegramIcon,
+    Icon: (
+      <TelegramIcon
+        sx={{
+          width: "2.5rem",
+          height: "2.5rem",
+          cursor: "pointer",
+          color: "white !important",
+        }}
+        htmlColor={"white !important"}
+      />
+    ),
   },
   {
     href: "tel:89088696565",
-    Icon: PhoneIcon,
+    Icon: (
+      <PhoneIcon
+        sx={{
+          width: "2.5rem",
+          height: "2.5rem",
+          cursor: "pointer",
+          color: "white !important",
+        }}
+        htmlColor={"white !important"}
+      />
+    ),
   },
   {
     href: "https://vk.com/feelingsstudio",
-    Icon: VK,
+    Icon: (
+      <VkIcon
+        sx={{
+          width: "2.5rem",
+          height: "2.5rem",
+          cursor: "pointer",
+          color: "white !important",
+        }}
+      />
+    ),
   },
 ];
 
@@ -157,14 +186,7 @@ const Footer = () => {
         <SocialBlock>
           {social.map((s) => (
             <IconLink href={s.href} key={s.href} target={"_blank"}>
-              <s.Icon
-                sx={{
-                  width: "2.5rem",
-                  height: "2.5rem",
-                  cursor: "pointer",
-                }}
-                color={"info"}
-              />
+              {s.Icon}
             </IconLink>
           ))}
         </SocialBlock>

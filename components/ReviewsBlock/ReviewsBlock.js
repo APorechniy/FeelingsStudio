@@ -13,16 +13,17 @@ const Container = styled.div`
   width: 100%;
   height: 100vh;
 
-  padding-top: 2rem;
+  padding-top: 5rem;
 
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+
+  background: ${theme.palette.primary.main};
 `;
 
 const FadeInTypography = styled(Typography)`
-  color: ${theme.palette.primary.main};
   opacity: 0;
   transition: 1s;
   animation: show 1s 1;
@@ -50,7 +51,7 @@ const ReviewsBlock = () => {
     <Container>
       <FadeInTypography
         variant="h2"
-        sx={{ fontWeight: "800" }}
+        sx={{ fontWeight: "800", color: "white" }}
         align={"center"}
       >
         Отзывы наших клиентов

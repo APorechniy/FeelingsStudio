@@ -95,9 +95,9 @@ export const subscribitions = [
       {
         key: "I3",
         name: 24,
-        duration: "6 месяцев",
+        duration: "4 месяцев",
         advantages: ["3 недели заморозки", "футболка с логотипом студии"],
-        price: "24.000 ₽",
+        price: "24.360 ₽",
         oldPrice: "34.800 ₽",
         sale: "-30%",
       },
@@ -127,7 +127,7 @@ export const subscribitions = [
       {
         key: "S3",
         name: 24,
-        duration: "6 месяцев",
+        duration: "4 месяца",
         advantages: ["3 недели заморозки", "футболки с логотипом студии"],
         price: "18.480 ₽ с человека",
         oldPrice: "26.400 ₽",

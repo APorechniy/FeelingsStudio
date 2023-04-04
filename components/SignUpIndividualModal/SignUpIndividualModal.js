@@ -15,12 +15,15 @@ import CloseIcon from "@mui/icons-material/Close";
 import ReactInputMask from "react-input-mask";
 import Link from "next/link";
 
+import { LoadingButton } from "@mui/lab";
+
 import axios from "axios";
 
 const SignUpIndividualModal = ({ openModal, handleCloseModal }) => {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [skill, setSkill] = useState("Индивидуальное занятие");
+  const [loadingButton, setLoadingButton] = useState(false);
 
   const [mode, setMode] = useState("form");
 
@@ -49,6 +52,7 @@ const SignUpIndividualModal = ({ openModal, handleCloseModal }) => {
       },
     };
 
+    setLoadingButton(true);
     const response = await axios.post(
       "https://api.emailjs.com/api/v1.0/email/send",
       JSON.stringify(data),
@@ -59,7 +63,11 @@ const SignUpIndividualModal = ({ openModal, handleCloseModal }) => {
       }
     );
 
+    setLoadingButton(false);
+
     changeMode();
+
+    ym("reachGoal", "modalSubscribeIndividual");
   };
 
   return mode === "form" ? (
@@ -134,15 +142,16 @@ const SignUpIndividualModal = ({ openModal, handleCloseModal }) => {
             </Link>
           </Typography>
 
-          <Button
-            sx={{ marginTop: "1.6rem" }}
+          <LoadingButton
+            sx={{ marginTop: "1.6rem", color: "white" }}
             color={"primary"}
             variant={"contained"}
             disabled={isDisabledButton}
             onClick={handleClick}
+            loading={loadingButton}
           >
             Отправить
-          </Button>
+          </LoadingButton>
         </Box>
 
         <Button

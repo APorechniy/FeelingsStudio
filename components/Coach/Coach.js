@@ -1,8 +1,10 @@
 import { Button, Typography } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { useObserver } from "../../hooks/use-observer";
 import SignUpIndividualModal from "../SignUpIndividualModal/SignUpIndividualModal";
+
+import theme from "../../config/theme";
 
 const Container = styled.div`
   width: 100%;
@@ -19,6 +21,8 @@ const Container = styled.div`
 const Content = styled.div`
   width: min(100%, 1300px);
   height: 100%;
+
+  padding-bottom: 0.5rem;
 
   display: flex;
   align-items: center;
@@ -56,6 +60,8 @@ const RightBlock = styled.div`
   justify-content: flex-end;
   flex-direction: column;
 
+  object-fit: cover;
+
   @media (max-width: 768px) {
     width: 100%;
   }
@@ -65,7 +71,7 @@ const FadeInTypography = styled(Typography)`
   opacity: 0;
   transition: 1s;
 
-  color: #006a4e;
+  color: ${theme.palette.primary.main};
 
   @media (max-width: 768px) {
     text-align: center !important;
@@ -90,12 +96,12 @@ const FadeInImage = styled.img`
 `;
 
 const StyledButton = styled(Button)`
-  background-color: #005234;
+  background-color: ${theme.palette.primary.main};
   box-shadow: 0 0 20px white;
   color: white;
 
   &:hover {
-    color: #005234;
+    color: ${theme.palette.primary.main};
   }
 `;
 
@@ -108,6 +114,7 @@ const Coach = () => {
 
   useObserver("coach-title");
   useObserver("coach-description");
+  useObserver("coach-description-long");
   useObserver("coach-image");
   useObserver("coach-signup");
 
@@ -134,10 +141,23 @@ const Coach = () => {
             Основатель, главный тренер, амбассадор FEELINGS
           </FadeInTypography>
           <FadeInTypography
+            variant="h4"
+            sx={{ marginTop: "1.5rem" }}
+            align={"center"}
+            data-delay={"1"}
+            id="coach-description-long"
+          >
+            В хореографии больше 14 лет. Попробовала множество направлений:
+            бальные, современные, классические, народные танцы, брейк-данс и
+            продолжает изучать новые направления. Победитель всероссийских и
+            международных конкурсов и фестивалей по хореографии. Не представляет
+            свою жизнь без танцев, семьи и сладостей!
+          </FadeInTypography>
+          <FadeInTypography
             variant="h2"
             sx={{ marginTop: "3.5rem" }}
             align={"center"}
-            data-delay={"1"}
+            data-delay={"1.5"}
             id="coach-signup"
           >
             Запишись на индивидуальное занятие уже сейчас!
@@ -155,7 +175,7 @@ const Coach = () => {
 
         <RightBlock>
           <FadeInImage
-            src={"/Coach.png"}
+            src={"/Coach.jpg"}
             alt="Тренер"
             id="coach-image"
             data-delay={"0.5"}

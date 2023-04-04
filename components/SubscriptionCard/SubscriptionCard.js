@@ -18,8 +18,10 @@ const Container = styled.div`
   padding-top: 7rem;
 
   @media (max-width: 768px) {
-    height: 35rem;
+    height: 18rem;
     margin-bottom: 7rem;
+
+    padding-top: 2rem;
   }
 
   transition: transform 0.5s linear;
@@ -43,7 +45,7 @@ const Content = styled.div`
   flex-direction: column;
 
   @media (max-width: 768px) {
-    height: 25rem;
+    padding: 0.5rem;
   }
 `;
 
@@ -66,6 +68,13 @@ const PromoCircle = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
+
+  @media (max-width: 768px) {
+    width: 7rem;
+    height: 7rem;
+    min-width: 7rem;
+    left: calc(50% - 3.5rem);
+  }
 `;
 
 const AdvantagesBlock = styled.div`
@@ -86,7 +95,7 @@ const AdvantagesItem = styled(Typography)`
   padding-left: 2rem;
 
   &::before {
-    content: " + ";
+    content: "+ ";
 
     position: absolute;
     left: 0rem;
@@ -103,6 +112,11 @@ const PriceBlock = styled.div`
   align-items: flex-start;
   justify-content: flex-start;
   flex-direction: column;
+
+  @media (max-width: 768px) {
+    flex-direction: row;
+    justify-content: space-around;
+  }
 `;
 
 const OldPriceBlock = styled.div`
@@ -112,6 +126,11 @@ const OldPriceBlock = styled.div`
   align-items: flex-start;
   justify-content: center;
   flex-direction: row;
+
+  @media (max-width: 768px) {
+    width: auto;
+    flex-direction: row-reverse;
+  }
 `;
 
 const SaleBlock = styled.div`
@@ -120,6 +139,14 @@ const SaleBlock = styled.div`
   padding-top: 0.2rem;
   margin-left: 2rem;
   background: white;
+
+  @media (max-width: 768px) {
+    margin-left: 0;
+    margin-right: 2rem;
+    padding-left: 0.4rem;
+    padding-right: 0.4rem;
+    padding-top: 0.1rem;
+  }
 `;
 
 const SlisingTypography = styled(Typography)`
@@ -168,7 +195,12 @@ const SubscriptionCard = ({
         <Typography
           variant="h2"
           gutterBottom
-          sx={{ fontWeight: 600, color: "white", textAlign: "center" }}
+          sx={{
+            fontWeight: 600,
+            color: "white",
+            textAlign: "center",
+            fontSize: { xs: "1rem", md: "1.75rem", lg: "1.75rem" },
+          }}
         >
           {duration}
         </Typography>
@@ -191,8 +223,9 @@ const SubscriptionCard = ({
             gutterBottom
             sx={{
               fontWeight: 600,
+              fontSize: { xs: "1rem", md: "1.75rem", lg: "1.75rem" },
               color: "white",
-              marginLeft: "2rem",
+              marginLeft: { sx: "0", md: "2rem", lg: "2rem" },
               marginBottom: "2rem",
             }}
           >
