@@ -69,7 +69,7 @@ const RightBlock = styled.div`
 
 const FadeInTypography = styled(Typography)`
   opacity: 0;
-  transition: 1s;
+  transition: 0.3s;
 
   color: ${theme.palette.primary.main};
 
@@ -80,7 +80,7 @@ const FadeInTypography = styled(Typography)`
 
 const FadeInImage = styled.img`
   opacity: 0;
-  transition: 1s;
+  transition: 0.3s;
 
   margin-top: 0.5rem;
 
@@ -135,7 +135,7 @@ const Coach = () => {
             variant="h4"
             sx={{ marginTop: "1.5rem" }}
             align={"left"}
-            data-delay={"0.5"}
+            data-delay={"0.2"}
             id="coach-description"
           >
             Основатель, главный тренер, амбассадор FEELINGS
@@ -144,7 +144,7 @@ const Coach = () => {
             variant="h4"
             sx={{ marginTop: "1.5rem" }}
             align={"center"}
-            data-delay={"1"}
+            data-delay={"0.4"}
             id="coach-description-long"
           >
             В хореографии больше 14 лет. Попробовала множество направлений:
@@ -157,7 +157,7 @@ const Coach = () => {
             variant="h2"
             sx={{ marginTop: "3.5rem" }}
             align={"center"}
-            data-delay={"1.5"}
+            data-delay={"0.6"}
             id="coach-signup"
           >
             Запишись на индивидуальное занятие уже сейчас!
