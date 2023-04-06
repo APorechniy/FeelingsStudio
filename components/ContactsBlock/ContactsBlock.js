@@ -3,7 +3,6 @@ import React from "react";
 import styled from "styled-components";
 
 import { YMaps, Map, Placemark } from "react-yandex-maps";
-import Logo from "../../public/Logo.png";
 
 import theme from "../../config/theme";
 
@@ -89,6 +88,10 @@ const MapContainer = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 const LogoImage = styled.img`

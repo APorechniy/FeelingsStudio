@@ -33,7 +33,7 @@ const Content = styled.div`
 
 const FadeInTypography = styled(Typography)`
   opacity: 0;
-  transition: 1s;
+  transition: 0.3s;
 
   color: white;
 `;

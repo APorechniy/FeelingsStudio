@@ -49,6 +49,10 @@ const SkillButton = styled.div`
     background: rgba(255, 255, 255, 1);
     color: ${theme.palette.primary.main} !important;
   }
+
+  @media (max-width: 768px) {
+    margin: 0.5rem;
+  }
 `;
 
 const Link = styled.a`

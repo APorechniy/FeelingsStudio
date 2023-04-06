@@ -127,9 +127,12 @@ const SignUpBlock = () => {
         },
       }
     );
+
     setLoadingButton(false);
 
     changeMode();
+
+    ym("reachGoal", "blockSubscribe");
   };
 
   return (

@@ -51,9 +51,15 @@ const HeightAnimationTypography = styled(Typography)`
   transition: all 0.5s;
 `;
 
-const StyledPlusIcon = styled(PlusIcon)``;
+const StyledPlusIcon = styled(PlusIcon)`
+  min-width: 1.2rem;
+  min-height: 1.2rem;
+`;
 
-const StyledMinusIcon = styled(MinusIcon)``;
+const StyledMinusIcon = styled(MinusIcon)`
+  min-width: 1.2rem;
+  min-height: 1.2rem;
+`;
 
 const QuestionBlock = styled.div`
   width: 100%;
@@ -82,10 +88,12 @@ const Row = styled.div`
   width: 100%;
   height: auto;
 
+  padding-right: 2rem;
+
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 `;
 
 const Questions = () => {

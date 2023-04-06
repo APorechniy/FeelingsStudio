@@ -2,7 +2,7 @@ const skillsInfo = [
   {
     name: "Barre",
     backgroundImage: "/barre.jpg",
-    videoSrc: "",
+    videoSrc: "/videos/barre-long.mp4",
     description: [
       "Интенсивная тренировка для прокачки ягодиц и ног,",
       "совмещённая с укреплением мышц пресса,",

@@ -17,7 +17,7 @@ const Container = styled.div`
   flex-wrap: wrap;
 
   opacity: 0;
-  transition: 1s;
+  transition: 0.3s;
 `;
 
 const Title = styled(Typography)`

@@ -11,6 +11,7 @@ import {
   MenuItem,
   Box,
 } from "@mui/material";
+import { LoadingButton } from "@mui/lab";
 import CloseIcon from "@mui/icons-material/Close";
 import ReactInputMask from "react-input-mask";
 import Link from "next/link";
@@ -24,6 +25,7 @@ const SignUpModal = ({ openModal, handleCloseModal }) => {
   const [skill, setSkill] = useState();
 
   const [mode, setMode] = useState("form");
+  const [loadingButton, setLoadingButton] = useState(false);
 
   const isDisabledButton = useMemo(() => {
     const phoneReg = /^([+]?[0-9\s-\(\)]{3,25})*$/i;
@@ -50,6 +52,7 @@ const SignUpModal = ({ openModal, handleCloseModal }) => {
       },
     };
 
+    setLoadingButton(true);
     const response = await axios.post(
       "https://api.emailjs.com/api/v1.0/email/send",
       JSON.stringify(data),
@@ -60,7 +63,11 @@ const SignUpModal = ({ openModal, handleCloseModal }) => {
       }
     );
 
+    setLoadingButton(false);
+
     changeMode();
+
+    ym(93067128, "reachGoal", "modalSubscribeGroup");
   };
 
   return mode === "form" ? (
@@ -138,15 +145,16 @@ const SignUpModal = ({ openModal, handleCloseModal }) => {
             </Link>
           </Typography>
 
-          <Button
-            sx={{ marginTop: "1.6rem" }}
+          <LoadingButton
+            sx={{ marginTop: "1.6rem", color: "white" }}
             color={"primary"}
             variant={"contained"}
             disabled={isDisabledButton}
             onClick={handleClick}
+            loading={loadingButton}
           >
             Отправить
-          </Button>
+          </LoadingButton>
 
           <Typography
             variant={"h5"}

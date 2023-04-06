@@ -27,6 +27,8 @@ const Content = styled.div`
 
   padding: 1rem;
 
+  background: white;
+
   border: 0.2rem solid ${theme.palette.primary.main};
   border-radius: 1rem;
 
